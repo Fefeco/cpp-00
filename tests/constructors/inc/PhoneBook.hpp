@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 17:46:58 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/09/28 19:49:13 by fcarranz         ###   ########.fr       */
+/*   Created: 2024/09/28 18:07:00 by fcarranz          #+#    #+#             */
+/*   Updated: 2024/09/28 19:51:00 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
-#include "Messages.hpp"
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
+# include <iostream>
+# include "Contact.hpp"
 
-int	main(void)
-{
-	PhoneBook	phonebook;
-	Contact		contact1("Juan Cruz", "Avila", 456789);
-	Messages	firstmessage;
-
-	std::cout << "Hello World" << std::endl;
-	return (0);
-}
+class	PhoneBook {
+	public:
+		Contact	contacts[8];
+		PhoneBook();
+		PhoneBook(Contact contact);
+};
+#endif

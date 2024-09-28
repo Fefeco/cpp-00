@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Messages.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 17:46:58 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/09/28 19:49:13 by fcarranz         ###   ########.fr       */
+/*   Created: 2024/09/28 18:32:01 by fcarranz          #+#    #+#             */
+/*   Updated: 2024/09/28 18:36:00 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
 #include "Messages.hpp"
 
-int	main(void)
-{
-	PhoneBook	phonebook;
-	Contact		contact1("Juan Cruz", "Avila", 456789);
-	Messages	firstmessage;
+Messages::Messages() {
+	std::cout << "Messages base constructor" << std::endl;
+}
 
-	std::cout << "Hello World" << std::endl;
-	return (0);
+Messages::Messages(std::string message) {
+	std::cout << "Messages constructor with message: ";
+	std::cout << message << std::endl;
 }

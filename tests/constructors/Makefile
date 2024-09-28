@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fedeito <fcarranz@student.42barcel>        +#+  +:+       +#+         #
+#    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/28 12:34:34 by fedeito           #+#    #+#              #
-#    Updated: 2024/09/28 17:55:31 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/09/28 18:50:11 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = test
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-OBJ_FLAGS = -MMD -g
+OBJ_FLAGS = -Iinc -MMD -g
 
-SRC = main.cpp #/
-#	  PhoneBook.cpp /
-#	  Contact.cpp /
-#	  Messages.cpp
+SRC = main.cpp \
+	  PhoneBook.cpp \
+	  Contact.cpp \
+	  Messages.cpp
 
 OBJ = $(SRC:.cpp=.o)
 DEP = $(SRC:.cpp=.d)
@@ -34,7 +34,7 @@ DEPS = $(addprefix $(DEP_DIR), $(DEP))
 all: $(NAME)
 
 $(NAME): $(OBJS) Makefile
-	$(CC) $(CFLAGS) $(OBJS) -Iinc -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR)%.o: %.cpp
 	mkdir -p $(OBJ_DIR) $(DEP_DIR)
