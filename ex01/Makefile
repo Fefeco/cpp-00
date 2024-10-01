@@ -6,7 +6,7 @@
 #    By: fcarranz <fcarranz@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 10:12:56 by fcarranz          #+#    #+#              #
-#    Updated: 2024/09/25 17:14:03 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/01 11:58:33 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,12 @@ NAME=phonebook
 OBJ_DIR=objs/
 DEP_DIR=deps/
 CC=g++
-CFLAGS=-Wall -Wextra -Werror -MMD -g -std=c++98
+CFLAGS=-Wall -Wextra -Werror -std=c++98
+OBJ_FLAGS = $(CFLAGS) -MMD -g -c
 
-SRC=megaphone.cpp
+SRC=main.cpp \
+	Contact.cpp \
+	PhoneBook.cpp
 OBJ=$(SRC:.cpp=.o)
 DEP=$(SRC:.cpp=.d)
 
@@ -30,9 +33,9 @@ all: $(NAME)
 $(NAME): Makefile $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-$(OBJ_DIR)%.o: %.c
+$(OBJ_DIR)%.o: %.cpp
 	@mkdir -p $(OBJ_DIR) $(DEP_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(OBJ_FLAGS) $< -o $@
 	@mv $(@:.o=.d) $(DEP_DIR)
 
 clean:
