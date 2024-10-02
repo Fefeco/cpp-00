@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fcarranz <fcarranz@student.42barcelon      +#+  +:+       +#+         #
+#    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 10:12:56 by fcarranz          #+#    #+#              #
-#    Updated: 2024/10/01 11:58:33 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/02 22:46:06 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ OBJ_FLAGS = $(CFLAGS) -MMD -g -c
 
 SRC=main.cpp \
 	Contact.cpp \
-	PhoneBook.cpp
+	PhoneBook.cpp \
+	Print.cpp
 OBJ=$(SRC:.cpp=.o)
 DEP=$(SRC:.cpp=.d)
 

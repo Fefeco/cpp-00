@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Print.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:18:06 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/02 22:44:19 by fcarranz         ###   ########.fr       */
+/*   Created: 2024/10/02 22:16:00 by fcarranz          #+#    #+#             */
+/*   Updated: 2024/10/02 22:47:53 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#ifndef PRINT_HPP
+# define PRINT_HPP
+# include <iostream>
 # include <vector>
-# include <cstdlib>
+# include <string>
 # include "Contact.hpp"
-# include "Print.hpp"
-
-class PhoneBook
+class Print
 {
 private:
-	std::vector<Contact> contacts;
-	std::string option;
-	
+	std::string format_string(std::string str);
+
 public:
-	PhoneBook();
-	~PhoneBook();
-	Print		print;
+	Print();
+	~Print();
+	void print_table(std::vector<Contact> contacts);
+	void print_contact(int index, std::vector<Contact> contacts);
+    void print_color(std::string status, std::string msj);
+	void print_welcome();
 
-	void add();
-	void search();
 };
-
 #endif
