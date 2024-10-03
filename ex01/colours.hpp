@@ -6,13 +6,13 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:04:45 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/02 22:30:42 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/03 12:35:24 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOURS_HPP
 # define COLOURS_HPP
-# define WRONG "\033[31m"
+# define ERROR "\033[31m"
 # define SUCCESS "\033[32m"
 # define WARNING "\033[33m"
 # define BLU "\033[34m"

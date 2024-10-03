@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/02 22:43:51 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/03 12:57:52 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	PhoneBook	book;
 	std::string	option;
 
-	book.print.print_welcome();
+	book.print.menu();
 	option = "";
 	while (option.compare("3"))
 	{
@@ -31,6 +31,6 @@ int	main(void)
 		if (option.compare("2") == 0)
 			book.search();
 	}
-	std::cout << "Good bye!" << std::endl;
+	book.print.menu_width(39, "Good bye!  -  PhoneBook by @fcarranz");
 	return (0);
 }
