@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fcarranz <fcarranz@student.42barcelon      +#+  +:+       +#+         #
+#    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 10:12:56 by fcarranz          #+#    #+#              #
-#    Updated: 2024/09/24 11:29:44 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/03 18:18:04 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME=megaphone
 OBJ_DIR=objs/
 DEP_DIR=deps/
 CC=g++
-CFLAGS=-Wall -Wextra -Werror -MMD -g -std=c++98
+CFLAGS=-Wall -Wextra -Werror -std=c++98
+OBJ_FLAGS = $(CFLAGS) -MMD -g -c
 
 SRC=megaphone.cpp
 OBJ=$(SRC:.cpp=.o)
@@ -30,9 +31,9 @@ all: $(NAME)
 $(NAME): Makefile $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-$(OBJ_DIR)%.o: $(SRC)
+$(OBJ_DIR)%.o: %.cpp
 	@mkdir -p $(OBJ_DIR) $(DEP_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(OBJ_FLAGS) $< -o $@
 	@mv $(@:.o=.d) $(DEP_DIR)
 
 clean:
