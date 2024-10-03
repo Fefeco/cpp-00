@@ -6,14 +6,13 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 13:34:26 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:58:41 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
-#include "colours.hpp"
 
 PhoneBook::PhoneBook()
 {
@@ -39,10 +38,19 @@ void PhoneBook::search()
 	{
 		std::cout << "index > ";
 		std::cin >> index;
-		if (index < 0 || index >= (int)this->contacts.size())
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore();
+			index = -1;
+			print.table(contacts);
+			print.format(ERROR, "Wrong input. Please enter a number");
+		}
+		else if (index < 0 || index >= (int)this->contacts.size())
 		{
 			print.table(contacts);
 			print.format(ERROR, "Index out of bounds. Please enter a valid one");
+			index = -1;
 		}
 		else
 			wrong_index = false;
@@ -62,8 +70,8 @@ void PhoneBook::add()
 	{
 		print.menu_width(39, "NEW CONTACT");
 		if (error)
-			print.format(WARNING, "Debe ingresar un nombre");
-		std::cout << "Nombre: ";
+			print.format(ERROR, "Error. Please enter a name");
+		std::cout << "Name: ";
 		std::getline(std::cin, input);
 		if (input.length() < 1)
 			error = 1;
@@ -76,8 +84,8 @@ void PhoneBook::add()
 	{
 		print.menu_width(39, "NEW CONTACT");
 		if (error)
-			print.format(WARNING, "Debe ingresar un apellido");
-		std::cout << "Apellido: ";
+			print.format(ERROR, "Error. Please enter a last name");
+		std::cout << "Last name: ";
 		std::getline(std::cin, input);
 		if (input.length() < 1)
 			error = 1;
@@ -90,8 +98,8 @@ void PhoneBook::add()
 	{
 		print.menu_width(39, "NEW CONTACT");
 		if (error)
-			print.format(WARNING, "Debe ingresar un apodo");
-		std::cout << "Apodo: ";
+			print.format(ERROR, "Error. Please enter a nickname");
+		std::cout << "Nickname: ";
 		std::getline(std::cin, input);
 		if (input.compare("EXIT") == 0)
 			break;
@@ -106,8 +114,8 @@ void PhoneBook::add()
 	{
 		print.menu_width(39, "NEW CONTACT");
 		if (error)
-			print.format(WARNING, "Debe ingresar un secreto");
-		std::cout << "Secreto mas oscuro: ";
+			print.format(ERROR, "Error. Please enter a secret");
+		std::cout << "Darkest secret: ";
 		std::getline(std::cin, input);
 		if (input.length() < 1)
 			error = 1;
@@ -121,8 +129,8 @@ void PhoneBook::add()
 	{
 		print.menu_width(39, "NEW CONTACT");
 		if (error)
-			print.format(ERROR, "Debe ingresar un numero de telefono valido");
-		std::cout << "Telefono: ";
+			print.format(ERROR, "Error. Please enter a valid phone number");
+		std::cout << "Phone number: ";
 		std::cin >> input;
 		i = -1;
 		while (input[++i])

@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 13:55:01 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:30:23 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <cstdlib>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include "colours.hpp"
 
 int	main(void)
 {

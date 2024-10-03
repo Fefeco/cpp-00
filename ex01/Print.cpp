@@ -6,12 +6,11 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 12:54:38 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:03:56 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Print.hpp"
-#include "colours.hpp"
 #include "Contact.hpp"
 #include <vector>
 #include <cstdlib>
@@ -60,25 +59,25 @@ void Print::menu_width(int length, const std::string& str)
 	std::cout << "/* " << std::setw(length + 5) << std::setfill('*') << " */\n\n";
 }
 
-void Print::table_menu()
-{
-	system("clear");
-	menu_width(39, "Enter index to display information");
-}
-
 void Print::contact(int index, std::vector<Contact>& contacts)
 {
-	std::cout << "  Nombre: " << contacts.at(index).get_name() << std::endl;
-	std::cout << "  Apellido: " << contacts.at(index).get_last_name() << std::endl;
-	std::cout << "  Apodo: " << contacts.at(index).get_nickname() << std::endl;
-	std::cout << "  Secreto mas oscuro: " << contacts.at(index).get_secret() << std::endl;
-	std::cout << "  Telefono: " << contacts.at(index).get_phone() << std::endl;
+	std::cout << BWH << "  Name: " << RST 
+			  << contacts.at(index).get_name() << std::endl;
+	std::cout << BWH << "  Last name: " << RST
+			  << contacts.at(index).get_last_name() << std::endl;
+	std::cout << BWH << "  Nickname: " << RST
+			  << contacts.at(index).get_nickname() << std::endl;
+	std::cout << BWH << "  Darkest secret: " << RST
+			  << contacts.at(index).get_secret() << std::endl;
+	std::cout << BWH << "  Phone number: " << RST
+			  << contacts.at(index).get_phone() << std::endl;
 
 }
 
 void Print::table(std::vector<Contact>& contacts)
 {
-	table_menu();
+	system("clear");
+	menu_width(39, "Enter index to display information");
 	std::cout << "+" << std::setfill('-')
 			  << std::setw(11) << "+"
 			  << std::setw(11) << "+"
