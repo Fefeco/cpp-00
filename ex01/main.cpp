@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 17:30:23 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/05 11:57:03 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main(void)
 			book.print.format(ERROR, "Command not found");
 		}
 	}
-	book.print.menu_width(39, "Good bye!  -  PhoneBook by @fcarranz");
+	book.print.menu_width(45, "Good bye!  -  PhoneBook by @fcarranz");
 	return (0);
 }

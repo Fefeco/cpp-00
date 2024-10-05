@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 17:58:41 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/05 11:57:30 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void PhoneBook::add()
 	std::cin.ignore();
 	while (input.length() < 1)
 	{
-		print.menu_width(39, "NEW CONTACT");
+		print.menu_width(45, "NEW CONTACT");
 		if (error)
 			print.format(ERROR, "Error. Please enter a name");
 		std::cout << "Name: ";
@@ -82,7 +82,7 @@ void PhoneBook::add()
 	error = 0;
 	while (input.length() < 1)
 	{
-		print.menu_width(39, "NEW CONTACT");
+		print.menu_width(45, "NEW CONTACT");
 		if (error)
 			print.format(ERROR, "Error. Please enter a last name");
 		std::cout << "Last name: ";
@@ -96,7 +96,7 @@ void PhoneBook::add()
 	error = 0;
 	while (input.length() < 1)
 	{
-		print.menu_width(39, "NEW CONTACT");
+		print.menu_width(45, "NEW CONTACT");
 		if (error)
 			print.format(ERROR, "Error. Please enter a nickname");
 		std::cout << "Nickname: ";
@@ -112,7 +112,7 @@ void PhoneBook::add()
 	error = 0;
 	while (input.length() < 1)
 	{
-		print.menu_width(39, "NEW CONTACT");
+		print.menu_width(45, "NEW CONTACT");
 		if (error)
 			print.format(ERROR, "Error. Please enter a secret");
 		std::cout << "Darkest secret: ";
@@ -127,7 +127,7 @@ void PhoneBook::add()
 	int i;
 	while (input.length() < 1)
 	{
-		print.menu_width(39, "NEW CONTACT");
+		print.menu_width(45, "NEW CONTACT");
 		if (error)
 			print.format(ERROR, "Error. Please enter a valid phone number");
 		std::cout << "Phone number: ";

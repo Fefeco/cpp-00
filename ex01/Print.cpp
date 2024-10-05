@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/05 11:51:28 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/05 11:56:50 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::string Print::format_string(const std::string &str)
 
 void Print::menu()
 {
-	menu_width(39, "Enter command: ADD, SEARCH or EXIT");
+	menu_width(45, "Enter command: ADD, SEARCH or EXIT");
 }
 
 void Print::menu_width(int length, const std::string &str)
