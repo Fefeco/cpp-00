@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 18:03:56 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/05 11:33:03 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,28 +76,17 @@ void Print::contact(int index, std::vector<Contact>& contacts)
 
 void Print::table(std::vector<Contact>& contacts)
 {
+	std::string separator = "+----------+----------+----------+----------+\n";
+	
 	system("clear");
-	menu_width(39, "Enter index to display information");
-	std::cout << "+" << std::setfill('-')
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::endl
-			  << std::setfill(' ');
-	std::cout << "|" << std::setw(10) << "Index" << "|";
-	std::cout << std::setw(10) << "First name" << "|";
-	std::cout << std::setw(10) << "Last name" << "|";
-	std::cout << std::setw(10) << "Nickname" << "|"
-			  << std::endl;
-
-	std::cout << "+" << std::setfill('-')
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::endl
-			  << std::setfill(' ');
+	menu_width(45, "Enter index to display information");
+	
+	std::cout << separator;
+	std::cout << "|" << std::setw(10) << "Index" << "|"
+			  << std::setw(10) << "First name" << "|"
+			  << std::setw(10) << "Last name" << "|"
+			  << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << separator;
 
 	for (size_t i = 0; i < contacts.size(); i++)
 	{
@@ -108,11 +97,5 @@ void Print::table(std::vector<Contact>& contacts)
 			  << std::endl;
 	}
 
-	std::cout << "+" << std::setfill('-')
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::setw(11) << "+"
-			  << std::endl
-			  << std::setfill(' ');
+	std::cout << separator;
 }
