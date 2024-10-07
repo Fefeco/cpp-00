@@ -6,19 +6,19 @@
 #    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 12:15:02 by fcarranz          #+#    #+#              #
-#    Updated: 2024/10/05 12:18:51 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/05 12:30:08 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME=account
+NAME=test
 OBJ_DIR=objs/
 DEP_DIR=deps/
 CC=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
 OBJ_FLAGS = $(CFLAGS) -MMD -g -c
 
-SRC=main.cpp \
+SRC=test.cpp \
 	Account.cpp
 OBJ=$(SRC:.cpp=.o)
 DEP=$(SRC:.cpp=.d)
