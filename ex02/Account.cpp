@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:36:11 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/17 11:19:29 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/17 20:19:23 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,21 @@ void	Account::displayStatus( void ) const {
 			  << std::endl;
 }
 
+void	Account::makeDeposit( int deposit ) {
+	this->_amount += deposit;
+	++this->_nbDeposits;
+	++t::_totalNbDeposits;
+	t::_totalAmount += deposit;
+	t::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";"
+			  << "p_amount:" << this->_amount - deposit << ";"
+			  << "deposit:" << deposit << ";"
+			  << "amount:" << this->_amount << ";"
+			  << "nb_deposits:" << this->_nbDeposits
+			  << std::endl;
+}
+
+
 
 void Account::_displayTimestamp( void ) {
 	std::time_t current_time = std::time( NULL );
@@ -87,3 +102,5 @@ void Account::_displayTimestamp( void ) {
 // [19920104_091532] index:0;amount:42;created
 // [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 // [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
+// [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
+
