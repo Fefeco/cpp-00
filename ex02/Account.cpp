@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:36:11 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/17 20:54:33 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/17 21:08:29 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
-// #include <utility>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -105,7 +104,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 		std::cout << this->_amount << ";withdrawal:refused" << std::endl;
 	else
 	{
-		std::cout << this->_amount - withdrawal << ";"
+		std::cout << this->_amount + withdrawal << ";"
 				  << "withdrawal:" << withdrawal << ";"
 				  << "amount:" << this->_amount << ";"
 				  << "nb_withdrawals:" << this->_nbWithdrawals
@@ -128,10 +127,3 @@ void Account::_displayTimestamp( void ) {
 			  << std::setw(2) << time->tm_sec
 			  << "] ";
 }
-// [19920104_091532] index:0;amount:42;created
-// [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
-// [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
-// [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
-// [19920104_091532] index:0;p_amount:47;withdrawal:refused
-// [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:
-
