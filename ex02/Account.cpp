@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:36:11 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/17 20:19:23 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/17 20:48:17 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	Account::displayStatus( void ) const {
 	t::_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";"
 			  << "amount:" << _amount << ";"
-			  << "deposits" << _nbDeposits << ";"
+			  << "deposits:" << _nbDeposits << ";"
 			  << "withdrawals:" << _nbWithdrawals
 			  << std::endl;
 }
@@ -83,7 +83,31 @@ void	Account::makeDeposit( int deposit ) {
 			  << std::endl;
 }
 
-
+bool	Account::makeWithdrawal( int withdrawal ) {
+	bool	allowed( true );
+	if (withdrawal > this->_amount)
+		allowed = false;
+	else {
+		this->_amount -= withdrawal;
+		++this->_nbWithdrawals;
+		++t::_totalNbWithdrawals;
+		t::_totalAmount -= withdrawal;
+	}
+	t::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";"
+			  << "p_amount:";
+	if (!allowed)
+		std::cout << this->_amount << ";withdrawal:refused" << std::endl;
+	else
+	{
+		std::cout << this->_amount - withdrawal << ";"
+				  << "withdrawal:" << withdrawal << ";"
+				  << "amount:" << this->_amount << ";"
+				  << "nb_withdrawals:" << this->_nbWithdrawals
+				  << std::endl;
+	}
+	return allowed;
+}
 
 void Account::_displayTimestamp( void ) {
 	std::time_t current_time = std::time( NULL );
@@ -103,4 +127,6 @@ void Account::_displayTimestamp( void ) {
 // [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 // [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
 // [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
+// [19920104_091532] index:0;p_amount:47;withdrawal:refused
+// [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:
 
