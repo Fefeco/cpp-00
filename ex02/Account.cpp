@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:36:11 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/17 20:48:17 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/17 20:54:33 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,12 @@ Account::Account( int initial_deposit )
 			  << "created" << std::endl;
 }
 
-Account::~Account( void ){}
+Account::~Account( void ) {
+	t::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";"
+			  << "amount:" << this->_amount << ";"
+			  << "closed" << std::endl;
+}
 
 
 void Account::displayAccountsInfos() {
