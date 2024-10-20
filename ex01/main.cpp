@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/05 11:57:03 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/20 13:18:05 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(void)
 	{
 		std::cout << "> ";
 		std::cin >> option;
+		if (std::cin.eof())
+			break;
 		if (option.compare("ADD") == 0)
 			book.add();
 		else if (option.compare("SEARCH") == 0)
