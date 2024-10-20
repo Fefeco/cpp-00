@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/20 13:18:05 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/20 13:58:14 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include "Print.hpp"
 
 int	main(void)
 {
@@ -21,7 +22,7 @@ int	main(void)
 	std::string	option;
 
 	option = "";
-	book.print.menu();
+	Print::menu();
 	while (option.compare("EXIT") != 0)
 	{
 		std::cout << "> ";
@@ -34,10 +35,10 @@ int	main(void)
 			book.search();
 		else if (option.compare("EXIT") != 0)
 		{
-			book.print.menu();
-			book.print.format(ERROR, "Command not found");
+			Print::menu();
+			Print::format(ERROR, "Command not found");
 		}
 	}
-	book.print.menu_width(45, "Good bye!  -  PhoneBook by @fcarranz");
+	Print::menu_width(45, "Good bye!  -  PhoneBook by @fcarranz");
 	return (0);
 }

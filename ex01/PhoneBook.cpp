@@ -6,17 +6,18 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/05 11:57:30 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:00:00 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
+#include "Print.hpp"
 
 PhoneBook::PhoneBook()
 {
-	print.menu();
+	Print::menu();
 }
 
 PhoneBook::~PhoneBook()
@@ -27,13 +28,13 @@ void PhoneBook::search()
 {
 	if (this->contacts.size() == 0)
 	{
-		print.menu();
-		print.format(WARNING, "Contact list empty. Tipe ADD to add one");
+		Print::menu();
+		Print::format(WARNING, "Contact list empty. Tipe ADD to add one");
 		return ;
 	}
 	int index = -1;
 	bool wrong_index = true;
-	print.table(contacts);
+	Print::table(contacts);
 	while (wrong_index)
 	{
 		std::cout << "index > ";
@@ -43,20 +44,20 @@ void PhoneBook::search()
 			std::cin.clear();
 			std::cin.ignore();
 			index = -1;
-			print.table(contacts);
-			print.format(ERROR, "Wrong input. Please enter a number");
+			Print::table(contacts);
+			Print::format(ERROR, "Wrong input. Please enter a number");
 		}
 		else if (index < 0 || index >= (int)this->contacts.size())
 		{
-			print.table(contacts);
-			print.format(ERROR, "Index out of bounds. Please enter a valid one");
+			Print::table(contacts);
+			Print::format(ERROR, "Index out of bounds. Please enter a valid one");
 			index = -1;
 		}
 		else
 			wrong_index = false;
 	}
-	print.menu();
-	print.contact(index, contacts);
+	Print::menu();
+	Print::contact(index, contacts);
 }
 
 void PhoneBook::add()
@@ -68,9 +69,9 @@ void PhoneBook::add()
 	std::cin.ignore();
 	while (input.length() < 1)
 	{
-		print.menu_width(45, "NEW CONTACT");
+		Print::menu_width(45, "NEW CONTACT");
 		if (error)
-			print.format(ERROR, "Error. Please enter a name");
+			Print::format(ERROR, "Error. Please enter a name");
 		std::cout << "Name: ";
 		std::getline(std::cin, input);
 		if (input.length() < 1)
@@ -82,9 +83,9 @@ void PhoneBook::add()
 	error = 0;
 	while (input.length() < 1)
 	{
-		print.menu_width(45, "NEW CONTACT");
+		Print::menu_width(45, "NEW CONTACT");
 		if (error)
-			print.format(ERROR, "Error. Please enter a last name");
+			Print::format(ERROR, "Error. Please enter a last name");
 		std::cout << "Last name: ";
 		std::getline(std::cin, input);
 		if (input.length() < 1)
@@ -96,9 +97,9 @@ void PhoneBook::add()
 	error = 0;
 	while (input.length() < 1)
 	{
-		print.menu_width(45, "NEW CONTACT");
+		Print::menu_width(45, "NEW CONTACT");
 		if (error)
-			print.format(ERROR, "Error. Please enter a nickname");
+			Print::format(ERROR, "Error. Please enter a nickname");
 		std::cout << "Nickname: ";
 		std::getline(std::cin, input);
 		if (input.compare("EXIT") == 0)
@@ -112,9 +113,9 @@ void PhoneBook::add()
 	error = 0;
 	while (input.length() < 1)
 	{
-		print.menu_width(45, "NEW CONTACT");
+		Print::menu_width(45, "NEW CONTACT");
 		if (error)
-			print.format(ERROR, "Error. Please enter a secret");
+			Print::format(ERROR, "Error. Please enter a secret");
 		std::cout << "Darkest secret: ";
 		std::getline(std::cin, input);
 		if (input.length() < 1)
@@ -127,9 +128,9 @@ void PhoneBook::add()
 	int i;
 	while (input.length() < 1)
 	{
-		print.menu_width(45, "NEW CONTACT");
+		Print::menu_width(45, "NEW CONTACT");
 		if (error)
-			print.format(ERROR, "Error. Please enter a valid phone number");
+			Print::format(ERROR, "Error. Please enter a valid phone number");
 		std::cout << "Phone number: ";
 		std::cin >> input;
 		i = -1;
@@ -149,6 +150,6 @@ void PhoneBook::add()
 		this->contacts.erase(contacts.begin());
 	this->contacts.push_back(new_contact);
 
-	print.menu();
-	print.format(SUCCESS, "Contact saved succsessfully");
+	Print::menu();
+	Print::format(SUCCESS, "Contact saved succsessfully");
 }

@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:16:00 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/03 18:01:42 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/20 13:55:10 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@
 class Print
 {
 private:
-	std::string format_string(const std::string& str);
+	static std::string format_string(const std::string& str);
 
 public:
 	Print();
 	~Print();
-	void table(std::vector<Contact>& contacts);
-	void contact(int index, std::vector<Contact>& contacts);
-    void format(const std::string& status, const std::string& msj);
-	void menu();
-	void menu_width(int length, const std::string& str);
+	static void table(std::vector<Contact>& contacts);
+	static void contact(int index, std::vector<Contact>& contacts);
+    static void format(const std::string& status, const std::string& msj);
+	static void menu();
+	static void menu_width(int length, const std::string& str);
 };
 #endif
