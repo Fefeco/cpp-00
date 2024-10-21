@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/05 11:56:50 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:13:10 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,26 @@
 #include <cstdlib>
 #include <iomanip>
 
-Print::Print() {}
+Print::Print( void ) {}
 
-Print::~Print() {}
+Print::~Print( void ) {}
 
-void Print::format(const std::string &status, const std::string &msj)
-{
+void Print::format( const std::string &status, const std::string &msj ) {
 	std::cout << status << msj << std::endl << RST;
 }
 
-std::string Print::format_string(const std::string &str)
-{
-	if (str.length() <= 10)
-		return (str);
-	return (str.substr(0, 9) + '.');
+std::string Print::format_string( const std::string &str ) {
+	if ( str.length() <= 10 )
+		return str;
+	return ( str.substr(0, 9) + '.' );
 }
 
-void Print::menu()
-{
-	menu_width(45, "Enter command: ADD, SEARCH or EXIT");
+void Print::menu() {
+	menu_width( 45, "Enter command: ADD, SEARCH or EXIT" );
 }
 
-void Print::menu_width(int length, const std::string &str)
-{
+void Print::menu_width( int length, const std::string &str ) {
+	
 	int pad_l = 0;
 	int pad_r = 0;
 	int diff = length - str.length() - 6;
@@ -56,7 +53,7 @@ void Print::menu_width(int length, const std::string &str)
 	std::string blank_line = start + std::string(length - 6, ' ') + end;
 	std::string separator = start + std::string(length - 6, '*') + end;
 
-	system("clear");
+	system( "clear" );
 	std::cout << separator;
 	std::cout << blank_line;
 	std::cout << start_pad << str << end_pad;
@@ -64,40 +61,43 @@ void Print::menu_width(int length, const std::string &str)
 	std::cout << separator;
 }
 
-void Print::contact(int index, std::vector<Contact> &contacts)
-{
+void Print::contact( int index, std::vector<Contact> &contacts ) {
+	
 	std::cout << BWH << "  Name: " << RST
-			  << contacts.at(index).get_name() << std::endl;
+			  << contacts.at( index ).get_name() << std::endl;
 	std::cout << BWH << "  Last name: " << RST
-			  << contacts.at(index).get_last_name() << std::endl;
+			  << contacts.at( index ).get_last_name() << std::endl;
 	std::cout << BWH << "  Nickname: " << RST
-			  << contacts.at(index).get_nickname() << std::endl;
+			  << contacts.at( index ).get_nickname() << std::endl;
 	std::cout << BWH << "  Darkest secret: " << RST
-			  << contacts.at(index).get_secret() << std::endl;
+			  << contacts.at( index ).get_secret() << std::endl;
 	std::cout << BWH << "  Phone number: " << RST
-			  << contacts.at(index).get_phone() << std::endl;
+			  << contacts.at( index ).get_phone() << std::endl;
+	
+	std::cout << "Press any key to continue...";
+	std::cin.get();
+	std::cin.ignore();
 }
 
-void Print::table(std::vector<Contact> &contacts)
-{
+void Print::table( std::vector<Contact> &contacts ) {
+	
 	std::string separator = "+----------+----------+----------+----------+\n";
-
-	system("clear");
-	menu_width(45, "Enter index to display information");
+	
+	system( "clear" );
+	menu_width( 45, "Enter index to display information" );
 
 	std::cout << separator;
-	std::cout << "|" << std::setw(10) << "Index" << "|"
-			  << std::setw(10) << "First name" << "|"
-			  << std::setw(10) << "Last name" << "|"
-			  << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << "|" << std::setw( 10 ) << "Index" << "|"
+			  << std::setw( 10 ) << "First name" << "|"
+			  << std::setw( 10 ) << "Last name" << "|"
+			  << std::setw( 10 ) << "Nickname" << "|" << std::endl;
 	std::cout << separator;
 
-	for (size_t i = 0; i < contacts.size(); i++)
-	{
-		std::cout << "|" << std::setw(10) << i << "|"
-				  << std::setw(10) << format_string(contacts.at(i).get_name()) << "|"
-				  << std::setw(10) << format_string(contacts.at(i).get_last_name()) << "|"
-				  << std::setw(10) << format_string(contacts.at(i).get_nickname()) << "|"
+	for ( size_t i = 0; i < contacts.size(); i++ ) {
+		std::cout << "|" << std::setw( 10 ) << i << "|"
+				  << std::setw( 10 ) << format_string(contacts.at(i).get_name()) << "|"
+				  << std::setw( 10 ) << format_string(contacts.at(i).get_last_name()) << "|"
+				  << std::setw( 10 ) << format_string(contacts.at(i).get_nickname()) << "|"
 				  << std::endl;
 	}
 

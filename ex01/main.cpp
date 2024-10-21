@@ -6,39 +6,45 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/20 13:58:14 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:49:36 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cstdlib>
+#include <limits>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include "Print.hpp"
 
-int	main(void)
+int	main( void )
 {
 	PhoneBook	book;
 	std::string	option;
+	bool		printError = false;
 
-	option = "";
-	Print::menu();
-	while (option.compare("EXIT") != 0)
+	while ( option.compare("EXIT") != 0 )
 	{
+		Print::menu();
+		if ( printError ) {
+			Print::format( ERROR, "Command not found" );
+			printError = false;
+		}
 		std::cout << "> ";
 		std::cin >> option;
-		if (std::cin.eof())
+		
+		if ( std::cin.eof() )
 			break;
-		if (option.compare("ADD") == 0)
+		if ( std::cin.fail() )
+			std::cin.clear();
+		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+		
+		if ( option.compare( "ADD" ) == 0 )
 			book.add();
-		else if (option.compare("SEARCH") == 0)
+		else if ( option.compare( "SEARCH" ) == 0 )
 			book.search();
-		else if (option.compare("EXIT") != 0)
-		{
-			Print::menu();
-			Print::format(ERROR, "Command not found");
-		}
+		else
+			printError = true;
 	}
-	Print::menu_width(45, "Good bye!  -  PhoneBook by @fcarranz");
-	return (0);
+	Print::menu_width( 45, "Good bye!  -  PhoneBook by @fcarranz" );
+	return 0;
 }
