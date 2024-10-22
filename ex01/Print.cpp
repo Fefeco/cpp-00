@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 12:31:02 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:08:36 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void Print::contact( int index, std::vector<Contact> &contacts ) {
 	std::cin.ignore();
 }
 
-void Print::table( std::vector<Contact> &contacts ) {
+void Print::table( Contact* contacts ) {
 	
 	std::string separator = "+----------+----------+----------+----------+\n";
 	
@@ -99,7 +99,7 @@ void Print::table( std::vector<Contact> &contacts ) {
 			  << std::setw( 10 ) << "Nickname" << "|" << std::endl;
 	std::cout << separator;
 
-	for ( size_t i = 0; i < contacts.size(); i++ ) {
+	for ( int i = 0; i < contacts[i].get_current_index() ) {
 		std::cout << "|" << std::setw( 10 ) << i << "|"
 				  << std::setw( 10 ) << format_string(contacts.at(i).get_name()) << "|"
 				  << std::setw( 10 ) << format_string(contacts.at(i).get_last_name()) << "|"

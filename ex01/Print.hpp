@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:16:00 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 12:31:21 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:10:01 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 
 	static void menu();
 	static void menu_width( int length, const std::string& str );
-	static void table( std::vector<Contact>& contacts );
+	static void table( Contact* contacts, int amount );
 	static void contact( int index, std::vector<Contact>& contacts );
     static void format( const std::string& msj );
 

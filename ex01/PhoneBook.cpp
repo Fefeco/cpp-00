@@ -6,17 +6,18 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 12:50:42 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:24:46 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <limits>
 #include "Print.hpp"
 
-PhoneBook::PhoneBook( size_t _max_size, int _current_index ) 
-: max_size( _max_size ), current_index(_current_index)
+PhoneBook::PhoneBook( size_t _max_size, int _current_index, size_t _amount ) 
+: max_size( _max_size ), current_index(_current_index), amount(_amount)
 {
 }
 
@@ -24,29 +25,30 @@ PhoneBook::~PhoneBook( void ) {}
 
 std::string PhoneBook::search( void ) {
 	
-	if ( this->current_index == -1 )
+	if ( this->amount == 0 )
 		return ( Print::WARNING + "Contact list empty. Tipe ADD to add one" );
 	
 	int index = -1;
-	bool wrong_index = true;
-	Print::table( contacts );
-	while ( wrong_index ) {
+	Print::table( contacts, this->current_index );
+	while ( index < 0 || index > this->max_size ) {
+
 		std::cout << "index > ";
 		std::cin >> index;
+
 		if ( std::cin.fail() ) {
 			std::cin.clear();
-			std::cin.ignore();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			index = -1;
-			Print::table( contacts );
+			Print::table( contacts , this->amount );
 			Print::format( Print::ERROR + "Wrong input. Please enter a number" );
+			continue;
 		}
-		else if ( index < 0 || index >= ( int )this->contacts.size() ) {
-			Print::table( contacts );
-			Print::format( Print::ERROR + "Index out of bounds. Please enter a valid one" );
-			index = -1;
-		}
-		else
-			wrong_index = false;
+
+		if ( index >= 0 && index < this->amount )
+			break;
+
+		Print::table( contacts, this->amount );
+		Print::format( Print::ERROR + "Index out of bounds. Please enter a valid one" );
 	}
 	Print::menu();
 	Print::contact( index, contacts );
