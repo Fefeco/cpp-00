@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:18:06 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 12:32:13 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:48:30 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class PhoneBook {
 
 public:
 
-	PhoneBook();
+	PhoneBook( size_t _max_size, int _current_index );
 	~PhoneBook();
 
 	std::string add();
@@ -28,9 +28,9 @@ public:
 
 private:
 
-	std::vector<Contact> contacts;
-	std::string option;
-	
+	Contact*	contacts[8];
+	size_t		max_size;
+	int			current_index;
 };
 
 #endif

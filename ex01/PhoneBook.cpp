@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 12:36:31 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:50:42 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 #include <iomanip>
 #include "Print.hpp"
 
-PhoneBook::PhoneBook( void ) {}
+PhoneBook::PhoneBook( size_t _max_size, int _current_index ) 
+: max_size( _max_size ), current_index(_current_index)
+{
+}
 
 PhoneBook::~PhoneBook( void ) {}
 
 std::string PhoneBook::search( void ) {
 	
-	if ( this->contacts.size() == 0 )
+	if ( this->current_index == -1 )
 		return ( Print::WARNING + "Contact list empty. Tipe ADD to add one" );
 	
 	int index = -1;
