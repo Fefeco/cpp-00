@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 14:40:07 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:47:55 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ std::string PhoneBook::search( void ) {
 		return ( Print::WARNING + "Contact list empty. Tipe ADD to add one" );
 	
 	int index = -1;
-	Print::table( contacts, this->current_index );
+	Print::table( contacts, this->amount );
 	while ( index < 0 || index >= ( int )this->amount ) {
 
 		std::cout << "index > ";
