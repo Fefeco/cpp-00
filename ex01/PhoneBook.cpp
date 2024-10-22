@@ -6,18 +6,18 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 13:24:46 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:40:07 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
 #include <limits>
+#include "PhoneBook.hpp"
 #include "Print.hpp"
 
-PhoneBook::PhoneBook( size_t _max_size, int _current_index, size_t _amount ) 
-: max_size( _max_size ), current_index(_current_index), amount(_amount)
+PhoneBook::PhoneBook( size_t _max_size, size_t _current_index, size_t _amount ) 
+: max_size( _max_size ), current_index( _current_index ), amount( _amount )
 {
 }
 
@@ -30,7 +30,7 @@ std::string PhoneBook::search( void ) {
 	
 	int index = -1;
 	Print::table( contacts, this->current_index );
-	while ( index < 0 || index > this->max_size ) {
+	while ( index < 0 || index >= ( int )this->amount ) {
 
 		std::cout << "index > ";
 		std::cin >> index;
@@ -44,15 +44,15 @@ std::string PhoneBook::search( void ) {
 			continue;
 		}
 
-		if ( index >= 0 && index < this->amount )
+		if ( index >= 0 && index < ( int )this->amount )
 			break;
 
 		Print::table( contacts, this->amount );
 		Print::format( Print::ERROR + "Index out of bounds. Please enter a valid one" );
 	}
 	Print::menu();
-	Print::contact( index, contacts );
-	return NULL;
+	Print::contact( contacts[index] );
+	return "";
 }
 
 std::string PhoneBook::add( void ) {
@@ -133,9 +133,14 @@ std::string PhoneBook::add( void ) {
 	}
 	new_contact.set_phone( input );
 
-	if ( this->contacts.size() == 8 )
-		this->contacts.erase( contacts.begin() );
-	this->contacts.push_back( new_contact );
+	if ( this->current_index == 8 )
+		this->current_index = 0;
+	if ( this->amount == 8 )
+		delete &this->contacts[this->current_index];
+	this->contacts[current_index] = new_contact;
+	this->current_index++;
+	if ( amount < 8 )
+		this->amount++;
 
 	Print::menu();
 	return ( Print::SUCCESS + "Contact saved succsessfully" );

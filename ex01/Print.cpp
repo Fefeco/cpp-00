@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 13:08:36 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:32:26 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,25 @@ void Print::menu_width( int length, const std::string &str ) {
 	std::cout << separator;
 }
 
-void Print::contact( int index, std::vector<Contact> &contacts ) {
+void Print::contact( Contact& contact ) {
 	
 	std::cout << BWH << "  Name: " << RST
-			  << contacts.at( index ).get_name() << std::endl;
+			  << contact.get_name() << std::endl;
 	std::cout << BWH << "  Last name: " << RST
-			  << contacts.at( index ).get_last_name() << std::endl;
+			  << contact.get_last_name() << std::endl;
 	std::cout << BWH << "  Nickname: " << RST
-			  << contacts.at( index ).get_nickname() << std::endl;
+			  << contact.get_nickname() << std::endl;
 	std::cout << BWH << "  Darkest secret: " << RST
-			  << contacts.at( index ).get_secret() << std::endl;
+			  << contact.get_secret() << std::endl;
 	std::cout << BWH << "  Phone number: " << RST
-			  << contacts.at( index ).get_phone() << std::endl;
+			  << contact.get_phone() << std::endl;
 	
 	std::cout << "Press any key to continue...";
 	std::cin.get();
 	std::cin.ignore();
 }
 
-void Print::table( Contact* contacts ) {
+void Print::table( Contact* contacts, size_t amount ) {
 	
 	std::string separator = "+----------+----------+----------+----------+\n";
 	
@@ -99,11 +99,11 @@ void Print::table( Contact* contacts ) {
 			  << std::setw( 10 ) << "Nickname" << "|" << std::endl;
 	std::cout << separator;
 
-	for ( int i = 0; i < contacts[i].get_current_index() ) {
+	for ( size_t i = 0; i < amount; ++i) {
 		std::cout << "|" << std::setw( 10 ) << i << "|"
-				  << std::setw( 10 ) << format_string(contacts.at(i).get_name()) << "|"
-				  << std::setw( 10 ) << format_string(contacts.at(i).get_last_name()) << "|"
-				  << std::setw( 10 ) << format_string(contacts.at(i).get_nickname()) << "|"
+				  << std::setw( 10 ) << format_string(contacts[i].get_name()) << "|"
+				  << std::setw( 10 ) << format_string(contacts[i].get_last_name()) << "|"
+				  << std::setw( 10 ) << format_string(contacts[i].get_nickname()) << "|"
 				  << std::endl;
 	}
 
