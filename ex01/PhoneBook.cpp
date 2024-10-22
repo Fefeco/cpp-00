@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/21 15:13:57 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:36:31 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ PhoneBook::PhoneBook( void ) {}
 
 PhoneBook::~PhoneBook( void ) {}
 
-void PhoneBook::search( void ) {
+std::string PhoneBook::search( void ) {
 	
-	if ( this->contacts.size() == 0 ) {
-		Print::menu();
-		Print::format( WARNING, "Contact list empty. Tipe ADD to add one" );
-		return;
-	}
+	if ( this->contacts.size() == 0 )
+		return ( Print::WARNING + "Contact list empty. Tipe ADD to add one" );
 	
 	int index = -1;
 	bool wrong_index = true;
@@ -38,11 +35,11 @@ void PhoneBook::search( void ) {
 			std::cin.ignore();
 			index = -1;
 			Print::table( contacts );
-			Print::format( ERROR, "Wrong input. Please enter a number" );
+			Print::format( Print::ERROR + "Wrong input. Please enter a number" );
 		}
 		else if ( index < 0 || index >= ( int )this->contacts.size() ) {
 			Print::table( contacts );
-			Print::format( ERROR, "Index out of bounds. Please enter a valid one" );
+			Print::format( Print::ERROR + "Index out of bounds. Please enter a valid one" );
 			index = -1;
 		}
 		else
@@ -50,9 +47,10 @@ void PhoneBook::search( void ) {
 	}
 	Print::menu();
 	Print::contact( index, contacts );
+	return NULL;
 }
 
-void PhoneBook::add( void ) {
+std::string PhoneBook::add( void ) {
 	
 	Contact new_contact;
 	std::string input = "";
@@ -61,7 +59,7 @@ void PhoneBook::add( void ) {
 	while ( input.length() < 1 ) {
 		Print::menu_width( 45, "NEW CONTACT" );
 		if ( error )
-			Print::format( ERROR, "Error. Please enter a name" );
+			Print::format( Print::ERROR + "Error. Please enter a name" );
 		std::cout << "Name: ";
 		std::getline( std::cin, input );
 		if ( input.length() < 1 )
@@ -74,7 +72,7 @@ void PhoneBook::add( void ) {
 	while ( input.length() < 1 ) {
 		Print::menu_width( 45, "NEW CONTACT" );
 		if ( error )
-			Print::format( ERROR, "Error. Please enter a last name" );
+			Print::format( Print::ERROR + "Error. Please enter a last name" );
 		std::cout << "Last name: ";
 		std::getline( std::cin, input );
 		if ( input.length() < 1 )
@@ -87,7 +85,7 @@ void PhoneBook::add( void ) {
 	while ( input.length() < 1 ) {
 		Print::menu_width( 45, "NEW CONTACT" );
 		if ( error )
-			Print::format( ERROR, "Error. Please enter a nickname" );
+			Print::format( Print::ERROR + "Error. Please enter a nickname" );
 		std::cout << "Nickname: ";
 		std::getline( std::cin, input );
 		if ( input.compare("EXIT") == 0 )
@@ -102,7 +100,7 @@ void PhoneBook::add( void ) {
 	while ( input.length() < 1 ) {
 		Print::menu_width( 45, "NEW CONTACT" );
 		if ( error )
-			Print::format( ERROR, "Error. Please enter a secret" );
+			Print::format( Print::ERROR + "Error. Please enter a secret" );
 		std::cout << "Darkest secret: ";
 		std::getline( std::cin, input );
 		if ( input.length() < 1 )
@@ -116,7 +114,7 @@ void PhoneBook::add( void ) {
 	while ( input.length() < 1 ) {
 		Print::menu_width( 45, "NEW CONTACT" );
 		if (error)
-			Print::format( ERROR, "Error. Please enter a valid phone number" );
+			Print::format( Print::ERROR + "Error. Please enter a valid phone number" );
 		std::cout << "Phone number: ";
 		std::cin >> input;
 		i = -1;
@@ -135,5 +133,5 @@ void PhoneBook::add( void ) {
 	this->contacts.push_back( new_contact );
 
 	Print::menu();
-	Print::format( SUCCESS, "Contact saved succsessfully" );
+	return ( Print::SUCCESS + "Contact saved succsessfully" );
 }

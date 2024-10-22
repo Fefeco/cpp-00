@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/21 15:13:10 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:31:02 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ Print::Print( void ) {}
 
 Print::~Print( void ) {}
 
-void Print::format( const std::string &status, const std::string &msj ) {
-	std::cout << status << msj << std::endl << RST;
+const std::string Print::ERROR 		= "\033[31m";
+const std::string Print::SUCCESS 	= "\033[32m";
+const std::string Print::WARNING 	= "\033[33m";
+const std::string Print::BWH 		= "\033[97m";
+const std::string Print::WHT 		= "\033[37m";
+
+void Print::format( const std::string &msj ) {
+	std::cout << msj << std::endl << RST;
 }
 
 std::string Print::format_string( const std::string &str ) {
