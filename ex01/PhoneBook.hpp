@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:18:06 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 12:14:29 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:52:50 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ private:
 	size_t		max_size;
 	size_t		current_index;
 	size_t		amount;
+
+	std::string	getStrInput( const char* inputName );
+	std::string	getNbInput( std::string& inputName );
+	void		exit( void );
 };
 
 #endif
