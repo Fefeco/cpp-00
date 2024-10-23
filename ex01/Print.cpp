@@ -6,13 +6,12 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 14:32:26 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:07:38 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Print.hpp"
 #include "Contact.hpp"
-#include <vector>
 #include <cstdlib>
 #include <iomanip>
 

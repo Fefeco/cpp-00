@@ -6,14 +6,13 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:16:00 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 14:30:32 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:07:25 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __PRINT_HPP__
 #define __PRINT_HPP__
 #include <iostream>
-#include <vector>
 #include <string>
 #include "Contact.hpp"
 

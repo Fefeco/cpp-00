@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 14:24:29 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:13:44 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main( void )
 			Print::format( msj );
 			msj.clear();
 		}
-		std::cout << "> ";
+		std::cout << "> " << std::flush;
 		std::cin >> option;
 		
 		if ( std::cin.eof() )
