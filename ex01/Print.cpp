@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:19:03 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 12:07:38 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:37:12 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ void Print::menu_width( int length, const std::string &str ) {
 	std::string separator = start + std::string(length - 6, '*') + end;
 
 	system( "clear" );
-	std::cout << separator;
-	std::cout << blank_line;
-	std::cout << start_pad << str << end_pad;
-	std::cout << blank_line;
-	std::cout << separator;
+	std::cout << std::endl
+			  << separator
+			  << blank_line
+			  << start_pad << str << end_pad
+			  << blank_line
+			  << separator
+			  << std::endl;
 }
 
 void Print::contact( Contact& contact ) {
@@ -79,7 +81,7 @@ void Print::contact( Contact& contact ) {
 	std::cout << BWH << "  Phone number: " << RST
 			  << contact.get_phone() << std::endl;
 	
-	std::cout << "Press any key to continue...";
+	std::cout << std::endl << "Press any key to continue...";
 	std::cin.get();
 	std::cin.ignore();
 }
@@ -91,12 +93,12 @@ void Print::table( Contact* contacts, size_t amount ) {
 	system( "clear" );
 	menu_width( 45, "Enter index to display information" );
 
-	std::cout << separator;
-	std::cout << "|" << std::setw( 10 ) << "Index" << "|"
+	std::cout << separator
+			  << "|" << std::setw( 10 ) << "Index" << "|"
 			  << std::setw( 10 ) << "First name" << "|"
 			  << std::setw( 10 ) << "Last name" << "|"
-			  << std::setw( 10 ) << "Nickname" << "|" << std::endl;
-	std::cout << separator;
+			  << std::setw( 10 ) << "Nickname" << "|" << std::endl
+			  << separator;
 
 	for ( size_t i = 0; i < amount; ++i) {
 		std::cout << "|" << std::setw( 10 ) << i << "|"
@@ -106,5 +108,5 @@ void Print::table( Contact* contacts, size_t amount ) {
 				  << std::endl;
 	}
 
-	std::cout << separator;
+	std::cout << separator << std::endl;
 }

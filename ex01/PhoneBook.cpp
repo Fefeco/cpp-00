@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/22 14:47:55 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:38:42 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,42 @@ PhoneBook::~PhoneBook( void ) {}
 
 std::string PhoneBook::search( void ) {
 	
+	std::string msj;
+	size_t		index;
+	
 	if ( this->amount == 0 )
 		return ( Print::WARNING + "Contact list empty. Tipe ADD to add one" );
 	
-	int index = -1;
-	Print::table( contacts, this->amount );
-	while ( index < 0 || index >= ( int )this->amount ) {
+	while ( this->amount ) {
 
-		std::cout << "index > ";
+		index = this->amount;
+		Print::table( contacts, this->amount );
+		if (!msj.empty())
+		{
+			Print::format( msj );
+			msj.clear();
+		}
+				
+		std::cout << "index > " << std::flush;
 		std::cin >> index;
+
+		if ( std::cin.eof() )
+			return "";
 
 		if ( std::cin.fail() ) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			index = -1;
-			Print::table( contacts , this->amount );
-			Print::format( Print::ERROR + "Wrong input. Please enter a number" );
+			msj = Print::ERROR + "Wrong input. Please enter a number";
 			continue;
 		}
 
-		if ( index >= 0 && index < ( int )this->amount )
+		if ( index < this->amount )
 			break;
-
-		Print::table( contacts, this->amount );
-		Print::format( Print::ERROR + "Index out of bounds. Please enter a valid one" );
+			
+		msj = Print::ERROR + "Index out of bounds. Please enter a valid one";
 	}
-	Print::menu();
+	
+	Print::menu_width( 45, "CONTACT INFO" );
 	Print::contact( contacts[index] );
 	return "";
 }
