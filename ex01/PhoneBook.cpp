@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 18:29:37 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 20:19:46 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ std::string PhoneBook::search( void ) {
 		std::cin >> index;
 
 		if ( std::cin.eof() )
-			return "";
+			this->exit();
 
 		if ( std::cin.fail() ) {
 			std::cin.clear();

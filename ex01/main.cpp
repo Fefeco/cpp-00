@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 18:31:03 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 20:14:56 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,10 @@ int	main( void )
 			msj.clear();
 		}
 		std::cout << "> " << std::flush;
-		std::cin >> option;
+		std::getline( std::cin, option );
 		
 		if ( std::cin.eof() )
 			break;
-		if ( std::cin.fail() )
-			std::cin.clear();
-		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 		
 		if ( option.compare( "ADD" ) == 0 )
 			msj = book.add();
