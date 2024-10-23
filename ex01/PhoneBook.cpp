@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 13:56:53 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:54:51 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,48 +53,57 @@ std::string	PhoneBook::getStrInput( const char* inputName ) {
 	return userInput;
 }
 
+std::string	PhoneBook::getNbInput( const char* inputName ) {
+	std::string userInput;
+	std::string	msj;
+	int 		i;
+	
+	while ( userInput.empty() ) {
+		
+		Print::menu_width( 45, "NEW CONTACT" );
+		if ( !msj.empty() )
+			Print::format( msj );
+			
+		std::cout << inputName << ": " << std::flush;
+		std::getline( std::cin, userInput);
+
+		if ( std::cin.eof() )
+			this->exit();
+		else if ( userInput.empty() )
+			msj = Print::ERROR + "Error. Please enter a " + inputName;
+		
+		i = -1;
+		while ( userInput[++i] ) {
+			
+			if ( userInput[i] < '0' || userInput[i] > '9' ) {
+				userInput.clear();
+				msj = Print::ERROR + "Error. Please enter a valid " + inputName;
+				break;
+			}
+			
+		}
+	}
+	return userInput;
+}
+
+
 std::string PhoneBook::add( void ) {
 	
 	Contact 	new_contact;
-	std::string input;
-	std::string	msj;
-	int			error;
 
 	new_contact.set_name( this->getStrInput( "Name" ) );
 	new_contact.set_last_name( this->getStrInput( "Last name" ) );
 	new_contact.set_nickname( this->getStrInput( "Nickname" ) );
 	new_contact.set_secret( this->getStrInput( "Darkest secret" ) );
-
-	input = "";
-	error = 0;
-	int i;
-	while ( input.length() < 1 ) {
-		Print::menu_width( 45, "NEW CONTACT" );
-		if (error)
-			Print::format( Print::ERROR + "Error. Please enter a valid phone number" );
-		std::cout << "Phone number: ";
-		std::cin >> input;
-		i = -1;
-		while ( input[++i] ) {
-			if ( input[i] < '0' || input[i] > '9' ) {
-				error = 1;
-				input = "";
-				break;
-			}
-		}
-	}
-	new_contact.set_phone( input );
+	new_contact.set_phone( this->getNbInput( "Phone number" ) );
 
 	if ( this->current_index == 8 )
 		this->current_index = 0;
-	if ( this->amount == 8 )
-		delete &this->contacts[this->current_index];
 	this->contacts[current_index] = new_contact;
 	this->current_index++;
 	if ( amount < 8 )
 		this->amount++;
 
-	Print::menu();
 	return ( Print::SUCCESS + "Contact saved succsessfully" );
 }
 
