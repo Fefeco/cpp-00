@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:18:06 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 14:27:13 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:31:00 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class PhoneBook {
 
 public:
 
-	PhoneBook( size_t _max_size, size_t _current_index, size_t amount );
+	PhoneBook( size_t _max_size );
 	~PhoneBook( void );
 
 	std::string add( void );

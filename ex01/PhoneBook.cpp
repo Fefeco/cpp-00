@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 14:54:51 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:29:37 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 #include "PhoneBook.hpp"
 #include "Print.hpp"
 
-PhoneBook::PhoneBook( size_t _max_size, size_t _current_index, size_t _amount ) 
-: max_size( _max_size ), current_index( _current_index ), amount( _amount )
+PhoneBook::PhoneBook( size_t _max_size ) 
+: max_size( _max_size )
 {
+	current_index = 0;
+	amount = 0;
 }
 
 PhoneBook::~PhoneBook( void ) {}

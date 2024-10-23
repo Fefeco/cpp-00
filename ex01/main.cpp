@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:34:56 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/23 12:13:44 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:31:03 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	main( void )
 {
-	PhoneBook	book(8, 0, 0);
+	PhoneBook	book(8);
 	std::string	option;
 	std::string	msj;
 
